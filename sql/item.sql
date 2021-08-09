@@ -1,4 +1,4 @@
-CREATE TABLE `items` (
+CREATE TABLE `item` (
   `ItemID` int NOT NULL AUTO_INCREMENT,
   `ItemName` varchar(45) NOT NULL,
   `PointValue` int NOT NULL,

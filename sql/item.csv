@@ -1,0 +1,148 @@
+ItemID,ItemName,PointValue
+1,"Abyssal orphan",27
+2,"Abyssal head",13
+3,"Bludgeon spine",2
+4,"Bludgeon claw",2
+5,"Bludgeon axon",2
+6,"Jar of miasma",10
+7,"Abyssal dagger",5
+8,"Abyssal whip",11
+9,"Ikkle hydra",27
+10,"Hydra's claw",9
+11,"Hydra tail",5
+12,"Hydra leather",5
+13,"Hydra's fang",2
+14,"Hydra's eye",2
+15,"Hydra's heart",2
+16,"Jar of chemicals",18
+18,"Callisto cub",45
+19,"Tyrannical ring",12
+20,"Dragon pickaxe",4
+21,"Dragon 2h sword",4
+22,Hellpuppy,20
+23,"Eternal crystal",3
+24,"Pegasian crystal",3
+25,"Primordial crystal",3
+26,"Jar of souls",13
+27,"Smouldering stone",3
+28,Olmlet,88
+29,Onyx,3
+30,"Dexterous prayer scroll",6
+31,"Arcane prayer scroll",6
+32,"Twisted buckler",29
+33,"Dragon hunter crossbow",29
+34,"Dinh's bulwark",38
+35,"Ancestral hat",38
+36,"Ancestral robe top",38
+37,"Ancestral robe bottom",38
+38,"Dragon claws",38
+39,"Elder maul",57
+40,"Kodai insignia",57
+41,"Twisted bow",57
+42,"Pet chaos elemental",4
+43,"Odium shard 1",1
+44,"Malediction shard 1",1
+45,"Pet zilyana",91
+46,"Armadyl crossbow",9
+47,"Saradomin hilt",9
+48,"Saradomin sword",2
+49,"Saradomin's light",5
+50,"Pet dark core",208
+51,"Elysian sigil",171
+52,"Spectral sigil",57
+53,"Arcane sigil",57
+54,"Holy elixir",7
+55,"Spirit shield",3
+56,"Odium shard 2",2
+57,"Malediction shard 2",2
+58,Youngllef,75
+59,"Crystal armour seed",4
+60,"Crystal weapon seed",4
+61,"Blade of saeldor (inactive)",60
+62,"Pet general graardor",77
+63,"Bandos chestplate",6
+64,"Bandos tassets",6
+65,"Bandos boots",6
+66,"Bandos hilt",8
+67,"Baby mole",80
+68,Noon,29
+69,"Black tourmaline core",5
+70,"Granite gloves",2
+71,"Granite ring",2
+72,"Granite hammer",4
+73,"Granite maul",1
+74,"Jar of stone",48
+75,Tzrek-jad,150
+76,"Kalphite princess",44
+78,"Jar of sand",30
+79,"Prince black dragon",18
+81,"Draconic visage",35
+82,"Pet kraken",20
+83,"Kraken tentacle",3
+84,"Trident of the seas",3
+85,"Jar of dirt",7
+86,"Pet kree-arra",87
+87,"Armadyl helmet",7
+88,"Armadyl chestplate",7
+89,"Armadyl chainskirt",7
+90,"Armadyl hilt",9
+91,"Pet k'ril tsutsaroth",67
+92,"Staff of the dead",2
+93,"Zamorakian spear",2
+94,"Steam battlestaff",7
+95,"Zamorak hilt",7
+96,"Seers ring",1
+97,"Pet dagannoth prime",28
+98,"Berserker ring",1
+99,"Warrior ring",1
+100,"Pet dagannoth rex",28
+101,Sraracha,67
+102,"Jar of eyes",44
+103,"Sarachnis cudgel",9
+104,"Scorpia's offspring",24
+105,"Odium shard 3",2
+106,"Malediction shard 3",2
+107,"Archers ring",1
+108,"Pet dagannoth supreme",28
+109,"Little nightmare",78
+110,"Inquisitor's mace",19
+111,"Inquisitor's great helm",9
+112,"Inquisitor's hauberk",9
+113,"Inquisitor's plateskirt",9
+114,"Nightmare staff",6
+115,"Volatile orb",28
+116,"Harmonised orb",28
+117,"Eldritch orb",28
+118,"Jar of dreams",39
+119,"Lil' zik",71
+120,"Scythe of vitur",19
+121,"Ghrazi rapier",9
+122,"Sanguinesti staff",9
+123,"Justiciar faceguard",9
+124,"Justiciar chestguard",9
+125,"Justiciar legguards",9
+126,"Avernic defender hilt",2
+127,"Pet smoke devil",17
+128,"Occult necklace",2
+129,"Smoke battlestaff",3
+130,"Dragon chainbody",11
+131,"Venenatis spiderling",29
+132,"Treasonous ring",7
+133,"Vet-ion jr.",50
+134,"Ring of the gods",13
+135,Vorki,33
+137,"Skeletal visage",56
+138,"Jar of decay",33
+139,"Dragonbone necklace",11
+140,Jal-nib-rek,220
+141,Smolcano,56
+142,"Crystal tool seed",5
+143,"Zalcano shard",28
+144,"Pet snakeling",33
+145,"Tanzanite mutagen",55
+146,"Magma mutagen",55
+147,"Jar of swamp",25
+148,"Magic fang",4
+149,"Serpentine visage",4
+150,"Tanzanite fang",4
+151,"Uncut onyx",4

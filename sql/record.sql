@@ -1,0 +1,11 @@
+CREATE TABLE `records` (
+  `RecordID` int NOT NULL AUTO_INCREMENT,
+  `PlayerID` int NOT NULL,
+  `ItemID` int NOT NULL,
+  `TimeReceived` datetime NOT NULL,
+  PRIMARY KEY (`RecordID`),
+  KEY `PlayerID_idx` (`PlayerID`),
+  KEY `ItemID_idx` (`ItemID`),
+  CONSTRAINT `ItemID` FOREIGN KEY (`ItemID`) REFERENCES `items` (`ItemID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `PlayerID` FOREIGN KEY (`PlayerID`) REFERENCES `players` (`PlayerID`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

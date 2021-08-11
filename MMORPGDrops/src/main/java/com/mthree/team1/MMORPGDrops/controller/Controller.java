@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,6 +30,7 @@ public class Controller {
     ServiceLayerImpl service;
 
     @PostMapping("/addPlayer/{playerName}")
+    @CrossOrigin
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<String> addPlayer(@PathVariable String playerName) {
         String addedPlayer = service.addPlayer(playerName);
@@ -38,6 +40,7 @@ public class Controller {
     }
     
     @PostMapping("/removePlayer/{playerName}")
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<String> removePlayer(@PathVariable String playerName) {
         String removedPlayer = service.removePlayer(playerName);
@@ -47,6 +50,7 @@ public class Controller {
     }
     
     @PostMapping("/addTeam/{teamName}")
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<String> addTeam(@PathVariable String teamName) {
         String addedTeam = service.addTeam(teamName);
@@ -56,6 +60,7 @@ public class Controller {
     }
     
     @PostMapping("/removeTeam/{teamName}")
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<String> removeTeam(@PathVariable String teamName) {
         String removedTeam = service.removeTeam(teamName);
@@ -65,6 +70,7 @@ public class Controller {
     }
     
     @PostMapping("/addLoot/{playerName}/{itemName}")
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<String> addLoot(@PathVariable String playerName, @PathVariable String itemName) {
         String addedLoot = service.addLoot(playerName, itemName);
@@ -74,6 +80,7 @@ public class Controller {
     }
     
     @PostMapping("/removeLoot/{playerName}/{itemName}")
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<String> removeLoot(@PathVariable String playerName, @PathVariable String itemName) {
         String removedLoot = service.removeLoot(playerName, itemName);
@@ -83,6 +90,7 @@ public class Controller {
     }
     
     @PostMapping("/joinTeam/{playerName}/{teamName}")
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<String> joinTeam(@PathVariable String playerName, @PathVariable String teamName) {
         String joinedTeam = service.joinTeam(playerName, teamName);
@@ -92,6 +100,7 @@ public class Controller {
     }
     
     @PostMapping("/leaveTeam/{playerName}/{teamName}")
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<String> leaveTeam(@PathVariable String playerName, @PathVariable String teamName) {
         String leftTeam = service.leaveTeam(playerName, teamName);
@@ -101,23 +110,27 @@ public class Controller {
     }
     
     @GetMapping("/playerHiscores")
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     public List<Hiscore> getPlayerHiscores() {
         return service.getPlayerHiscores();
     }
     
     @GetMapping("/teamHiscores")
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     public List<Hiscore> getTeamHiscores() {
         return service.getTeamHiscores();
     }
     
     @GetMapping("/personalPoints/{playerName}")
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     public Hiscore getPersonalPoints(@PathVariable String playerName) {
         return service.getPersonalPoints(playerName);
     }
     @GetMapping("/teamPoints/{teamName}")
+    @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     public Hiscore getTeamPoints(@PathVariable String teamName) {
         return service.getTeamPoints(teamName);

@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import PlayerTable from './tables/UserTable'
-import AddUserForm from './Forms/AddUserForm'
-import EditTeamForm from './Forms/EditForm'
-import { Container, Row, Col } from 'react-bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import PlayerTable from '../tables/PlayerTable';
+import AddPlayerForm from '../forms/AddPlayerForm';
+import EditTeamForm from '../forms/EditTeamForm';
+import { Container, Row, Col } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
 export function Players (props){
-  const SERVICE_URL = 'localhost:8080'
+  const SERVICE_URL = 'http://localhost:8080'
 
   const getPlayerData = () => {
-    return fetch(SERVICE_URL + '/getAllPlayers')        // get users list
+    return fetch(SERVICE_URL + '/allPlayers')        // get users list
       .then(response => response.json())           // parse JSON
       .then(players => setPlayers(players))              // pick first user
   }
@@ -19,15 +19,15 @@ export function Players (props){
   const playerData = [
   ]
 
-  const [players, setUsers] = useState(playerData)
+  const [players, setPlayers] = useState(playerData)
 
-  const addPlayer = (player) => {
+  const addPlayer = (players) => {
     fetch(SERVICE_URL + '/addPlayer/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(player),
+      body: JSON.stringify(players),
     })
       .then(response => response.json())
       .then(data => {
@@ -70,9 +70,9 @@ export function Players (props){
     setEditing(true)
 
     setCurrentPlayer({
-        PlayerID: player.PlayerID,
-        PlayerName: player.PlayerName,
-        TeamName: player.TeamName
+        PlayerID: players.PlayerID,
+        PlayerName: players.PlayerName,
+        TeamName: players.TeamName
     })
   }
 
@@ -118,7 +118,7 @@ export function Players (props){
           <h2>Player Table</h2>
           <PlayerTable
             players={players}
-            deletePlayer={deleteUser}
+            deletePlayer={removePlayer}
           />
         </Col>
         <Col sm={3}>
@@ -134,7 +134,7 @@ export function Players (props){
           ) : (
               <div>
                 <h2>Add Player</h2>
-                <AddUserForm addUser={addPlayer} />
+                <AddPlayerForm addUser={addPlayer} />
               </div>
             )}
 

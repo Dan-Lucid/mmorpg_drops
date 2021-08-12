@@ -25,7 +25,7 @@ public class ServiceLayerImpl implements ServiceLayer{
     
     
     @Override
-    public String addPlayer(String playerName) {
+    public Player addPlayer(String playerName) {
         return dao.addPlayer(playerName);
     }
 

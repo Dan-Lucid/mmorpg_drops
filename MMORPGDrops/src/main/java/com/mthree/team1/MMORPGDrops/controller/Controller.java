@@ -30,17 +30,17 @@ public class Controller {
     @Autowired
     ServiceLayerImpl service;
 
-    @GetMapping("/addPlayer/{playerName}")
+    @PostMapping("/addPlayer/{playerName}")
     @CrossOrigin
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<String> addPlayer(@PathVariable String playerName) {
-        String addedPlayer = service.addPlayer(playerName);
+    public ResponseEntity<Player> addPlayer(@PathVariable String playerName) {
+        Player addedPlayer = service.addPlayer(playerName);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(addedPlayer + " added to competition.");
+                .body(addedPlayer);
     }
     
-    @GetMapping("/removePlayer/{playerName}")
+    @PostMapping("/removePlayer/{playerName}")
     @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<String> removePlayer(@PathVariable String playerName) {
@@ -50,7 +50,7 @@ public class Controller {
                 .body(removedPlayer + " removed from competition.");
     }
     
-    @GetMapping("/addTeam/{teamName}")
+    @PostMapping("/addTeam/{teamName}")
     @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<String> addTeam(@PathVariable String teamName) {
@@ -60,7 +60,7 @@ public class Controller {
                 .body("Team " + addedTeam + " added to competition.");
     }
     
-    @GetMapping("/removeTeam/{teamName}")
+    @PostMapping("/removeTeam/{teamName}")
     @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<String> removeTeam(@PathVariable String teamName) {
@@ -70,7 +70,7 @@ public class Controller {
                 .body("Team " + removedTeam + " removed from competition.");
     }
     
-    @GetMapping("/addLoot/{playerName}/{itemName}")
+    @PostMapping("/addLoot/{playerName}/{itemName}")
     @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<String> addLoot(@PathVariable String playerName, @PathVariable String itemName) {
@@ -80,7 +80,7 @@ public class Controller {
                 .body(addedLoot + " added for "+ playerName);
     }
     
-    @GetMapping("/removeLoot/{playerName}/{itemName}")
+    @PostMapping("/removeLoot/{playerName}/{itemName}")
     @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<String> removeLoot(@PathVariable String playerName, @PathVariable String itemName) {
@@ -90,7 +90,7 @@ public class Controller {
                 .body(removedLoot + " removed for " + playerName);
     }
     
-    @GetMapping("/joinTeam/{playerName}/{teamName}")
+    @PostMapping("/joinTeam/{playerName}/{teamName}")
     @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<String> joinTeam(@PathVariable String playerName, @PathVariable String teamName) {
@@ -100,7 +100,7 @@ public class Controller {
                 .body(playerName + " joined Team " + joinedTeam);
     }
     
-    @GetMapping("/leaveTeam/{playerName}/{teamName}")
+    @PostMapping("/leaveTeam/{playerName}/{teamName}")
     @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<String> leaveTeam(@PathVariable String playerName, @PathVariable String teamName) {

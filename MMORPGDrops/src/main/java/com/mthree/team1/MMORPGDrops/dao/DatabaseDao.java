@@ -40,7 +40,7 @@ public class DatabaseDao implements Dao {
     }
     
     @Override
-    public String addPlayer(String playerName) {
+    public Player addPlayer(String playerName) {
         final String ADD_PLAYER = "INSERT INTO player (PlayerName) VALUES (?);";
         GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
         
@@ -54,9 +54,9 @@ public class DatabaseDao implements Dao {
             return statement;
         }, keyHolder);
         
-
+        Player addedPlayer = new Player(keyHolder.getKey().intValue(), playerName);
         
-        return playerName;
+        return addedPlayer;
     }
 
     @Override

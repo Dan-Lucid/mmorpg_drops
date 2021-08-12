@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface ServiceLayer {
 
-    String addPlayer(String playerName);
+    Player addPlayer(String playerName);
     String removePlayer(String playerName);
     String addTeam(String teamName);
     String removeTeam(String teamName);

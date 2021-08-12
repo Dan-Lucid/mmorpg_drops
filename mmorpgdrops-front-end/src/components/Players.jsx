@@ -16,13 +16,13 @@ export function Players (props){
   const SERVICE_URL = 'http://localhost:8080'
 
   const getPlayerData = () => {
-    return fetch(SERVICE_URL + '/allPlayers')        // get users list
+    return fetch(SERVICE_URL + '/allPlayers')      // get users list
       .then(response => response.json())           // parse JSON
-      .then(players => setPlayers(players))              // pick first user
+      .then(players => setPlayers(players))        // pick first user
   }
 
   const addPlayer = (players) => {
-    fetch(SERVICE_URL + '/addPlayer/', {
+    fetch(SERVICE_URL + '/addPlayer/'+players.playerName, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -31,15 +31,12 @@ export function Players (props){
     })
       .then(response => response.json())
       .then(data => {
-        console.log('Add Player - Success:', data);
         getPlayerData();
       })
       .catch((error) => {
         console.log('Add Player - Error:')
         console.log(error)
       });
-
-    console.log(players)
   }
 
   const removePlayer = (player) => {
@@ -60,7 +57,7 @@ export function Players (props){
   const initialFormState = {
     playerID: null,
     playerName: '',
-    teamName: ' '
+    teamName: null
   }
 
   const [currentPlayer, setCurrentPlayer] = useState(initialFormState)
@@ -72,7 +69,7 @@ export function Players (props){
     console.log(teamName)
 
     fetch(SERVICE_URL + '/joinTeam/' + player + '/' + teamName,{
-      method: 'PUT',
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -119,7 +116,7 @@ export function Players (props){
           ) : (
               <div>
                 <h2>Add Player</h2>
-                <AddPlayerForm addUser={addPlayer} />
+                <AddPlayerForm addPlayer={addPlayer} />
               </div>
             )}
 

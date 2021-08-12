@@ -7,7 +7,7 @@ const AddPlayerForm = (props) => {
     const initialFormState = {
         playerID: null,
         playerName: '',
-        teamName: ' '
+        teamName: ''
     }
     const [player, setPlayer] = useState(initialFormState)
 

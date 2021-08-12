@@ -242,19 +242,12 @@ public class DatabaseDao implements Dao {
     }
 
     @Override
-    public Hiscore getPersonalPoints(String playerName) {
-        final String PLAYER_HISCORES = "SELECT * FROM v_player_hiscores WHERE PlayerName=?";
-        Hiscore playerHS = jdbc.queryForObject(PLAYER_HISCORES, new PlayerHiscoreMapper(), playerName);
-        return playerHS;
+    public List<Player> getAllPlayers() {
+        final String ALL_PLAYERS = "SELECT PlayerId, PlayerName, TeamName FROM mmorpg_drops.player LEFT JOIN team ON player.teamID = team.teamID";
+        List<Player> AllPlayers = jdbc.query(ALL_PLAYERS, new PlayersMapper());
+        return AllPlayers;
     }
 
-    @Override
-    public Hiscore getTeamPoints(String teamName) {
-        final String TEAM_HISCORES = "SELECT * FROM v_team_hiscores WHERE TeamName=?";
-        Hiscore teamHS = jdbc.queryForObject(TEAM_HISCORES, new TeamHiscoreMapper(), teamName);
-        return teamHS;
-    }
-    
     private static final class PlayerMapper implements RowMapper<Player> {
         
         @Override
@@ -296,6 +289,15 @@ public class DatabaseDao implements Dao {
         public Hiscore mapRow(ResultSet rs, int index) throws SQLException {
             Hiscore hiscore = new Hiscore(rs.getInt("Ranking"), rs.getString("teamName"), rs.getInt("Points"));
             return hiscore;
+        }
+    }
+
+    private static final class PlayersMapper implements RowMapper<Player> {
+
+        @Override
+        public Player mapRow(ResultSet rs, int index) throws SQLException {
+            Player player = new Player(rs.getInt("PlayerID"), rs.getString("PlayerName"), rs.getString("TeamName"));
+            return player;
         }
     }
 }

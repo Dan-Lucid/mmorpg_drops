@@ -6,6 +6,7 @@
 package com.mthree.team1.MMORPGDrops.controller;
 
 import com.mthree.team1.MMORPGDrops.dto.Hiscore;
+import com.mthree.team1.MMORPGDrops.dto.Player;
 import com.mthree.team1.MMORPGDrops.service.ServiceLayerImpl;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -122,18 +123,12 @@ public class Controller {
     public List<Hiscore> getTeamHiscores() {
         return service.getTeamHiscores();
     }
-    
-    @GetMapping("/personalPoints/{playerName}")
+
+    @GetMapping("/allPlayers")
     @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
-    public Hiscore getPersonalPoints(@PathVariable String playerName) {
-        return service.getPersonalPoints(playerName);
-    }
-    @GetMapping("/teamPoints/{teamName}")
-    @CrossOrigin
-    @ResponseStatus(HttpStatus.OK)
-    public Hiscore getTeamPoints(@PathVariable String teamName) {
-        return service.getTeamPoints(teamName);
+    public List<Player> getAllPlayers() {
+        return service.getAllPlayers();
     }
     
 }

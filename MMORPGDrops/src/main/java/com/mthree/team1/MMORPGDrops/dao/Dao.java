@@ -6,6 +6,8 @@
 package com.mthree.team1.MMORPGDrops.dao;
 
 import com.mthree.team1.MMORPGDrops.dto.Hiscore;
+import com.mthree.team1.MMORPGDrops.dto.Player;
+
 import java.util.List;
 
 /**
@@ -24,6 +26,5 @@ public interface Dao {
     String leaveTeam(String playerName, String  teamName);
     List<Hiscore> getPlayerHiscores();
     List<Hiscore> getTeamHiscores();
-    Hiscore getPersonalPoints(String playerName);
-    Hiscore getTeamPoints(String teamName);
+    List<Player> getAllPlayers();
 }

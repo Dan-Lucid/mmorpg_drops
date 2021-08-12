@@ -8,6 +8,8 @@ package com.mthree.team1.MMORPGDrops.service;
 import com.mthree.team1.MMORPGDrops.dao.DatabaseDao;
 import com.mthree.team1.MMORPGDrops.dto.Hiscore;
 import java.util.List;
+
+import com.mthree.team1.MMORPGDrops.dto.Player;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -73,12 +75,8 @@ public class ServiceLayerImpl implements ServiceLayer{
     }
 
     @Override
-    public Hiscore getPersonalPoints(String playerName) {
-        return dao.getPersonalPoints(playerName);
+    public List<Player> getAllPlayers() {
+        return dao.getAllPlayers();
     }
 
-    @Override
-    public Hiscore getTeamPoints(String teamName) {
-        return dao.getTeamPoints(teamName);
-    }
 }

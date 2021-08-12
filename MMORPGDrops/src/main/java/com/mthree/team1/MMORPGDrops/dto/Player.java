@@ -12,11 +12,17 @@ package com.mthree.team1.MMORPGDrops.dto;
 public class Player {
     private int playerId;
     private String playerName;
-    private int teamId;
+    private String teamName;
 
     public Player(int playerId, String playerName) {
         this.playerId = playerId;
         this.playerName = playerName;
+    }
+
+    public Player(int playerId, String playerName, String teamName) {
+        this.playerId = playerId;
+        this.playerName = playerName;
+        this.teamName = teamName;
     }
 
     public int getPlayerId() {
@@ -35,12 +41,12 @@ public class Player {
         this.playerName = playerName;
     }
 
-    public int getTeamId() {
-        return teamId;
+    public String getTeamName() {
+        return teamName;
     }
 
-    public void setTeamId(int teamId) {
-        this.teamId = teamId;
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
     }
     
     

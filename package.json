@@ -1,0 +1,24 @@
+{
+  "name": "mmorpg_drops",
+  "version": "1.0.0",
+  "description": "Mthree C117 project. Tracks player loot from mmorpg Oldschool Runescape for competition purposes.",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dan-Lucid/mmorpg_drops.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dan-Lucid/mmorpg_drops/issues"
+  },
+  "homepage": "https://github.com/Dan-Lucid/mmorpg_drops#readme"
+}

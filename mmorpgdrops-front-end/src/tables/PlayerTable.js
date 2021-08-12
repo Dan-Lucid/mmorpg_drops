@@ -1,5 +1,5 @@
 import React from 'react'
-import {Table, Button } from 'react-bootstrap'
+import {Table } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const PlayerTable = (props) => {
@@ -16,7 +16,7 @@ const PlayerTable = (props) => {
                 {props.players.length > 0 ? (
                     props.players.map((player) => (
                         <tr key={player.playerName} >
-                            <td>{player.playerID} </td>
+                            <td>{player.playerId} </td>
                             <td>{player.playerName} </td>
                             <td>{player.teamName} </td>
                         </tr>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import TeamHiscoreTable from '../tables/TeamHiscoreTable.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Grid, Button, Table, TextField } from "@material-ui/core";
+import { Container } from "@material-ui/core";
 
 
 export function TeamHiscores() {

@@ -5,9 +5,9 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 const AddPlayerForm = (props) => {
 
     const initialFormState = {
-        PlayerID: null,
-        PlayerName: '',
-        TeamName: ' '
+        playerID: null,
+        playerName: '',
+        teamName: ' '
     }
     const [player, setPlayer] = useState(initialFormState)
 
@@ -27,7 +27,7 @@ const AddPlayerForm = (props) => {
         >
             <div className='form-group col'>
                 <label>Player Name</label>
-                <input type='text' name='playerName' value={player.PlayerName}
+                <input type='text' name='playerName' value={player.playerName}
                     onChange={handleInputChange} />
             </div>
     

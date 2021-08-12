@@ -8,6 +8,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 export function Players (props){
+  const playerData = [
+  ]
+
+  const [players, setPlayers] = useState(playerData)
+
   const SERVICE_URL = 'http://localhost:8080'
 
   const getPlayerData = () => {
@@ -15,11 +20,6 @@ export function Players (props){
       .then(response => response.json())           // parse JSON
       .then(players => setPlayers(players))              // pick first user
   }
-
-  const playerData = [
-  ]
-
-  const [players, setPlayers] = useState(playerData)
 
   const addPlayer = (players) => {
     fetch(SERVICE_URL + '/addPlayer/', {
@@ -58,35 +58,25 @@ export function Players (props){
   }
 
   const initialFormState = {
-    PlayerID: null,
-    PlayerName: '',
-    TeamName: ' '
+    playerID: null,
+    playerName: '',
+    teamName: ' '
   }
 
   const [currentPlayer, setCurrentPlayer] = useState(initialFormState)
   const [editing, setEditing] = useState(false)
 
-  const editRow = (user) => {
-    setEditing(true)
-
-    setCurrentPlayer({
-        PlayerID: players.PlayerID,
-        PlayerName: players.PlayerName,
-        TeamName: players.TeamName
-    })
-  }
-
-  const playerJoinTeam = (player, TeamName) => {
+  const playerJoinTeam = (player, teamName) => {
 
     console.log(`Submitting edit for player ${player}`)
-    console.log(TeamName)
+    console.log(teamName)
 
-    fetch(SERVICE_URL + '/joinTeam/' + player + '/' + TeamName,{
+    fetch(SERVICE_URL + '/joinTeam/' + player + '/' + teamName,{
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(TeamName),
+      body: JSON.stringify(teamName),
     })
       .then(response => response.json())
       .then(data => {
@@ -107,11 +97,6 @@ export function Players (props){
   if(players){
       return (
     <Container>
-      <Row>
-        <Col>
-          <h1 className='text-center'>CRUD App with Hooks</h1>
-        </Col>
-      </Row>
       <hr />
       <Row>
         <Col sm={9}>

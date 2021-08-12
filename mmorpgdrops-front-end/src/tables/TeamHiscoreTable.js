@@ -1,5 +1,5 @@
 import React from 'react'
-import {Table, Button } from 'react-bootstrap'
+import {Table } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const TeamHiscoreTable = (props) => {

@@ -3,23 +3,23 @@ import { Form, Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const EditTeamForm = (props) => {
-    const [player, setUser] = useState(props.currentUser)
+    const [player, setPlayer] = useState(props.currentPlayer)
 
     const handleInputChange = (event) => {
         const { name, value } = event.target
 
-        setUser({ ...player, [name]: value })
+        setPlayer({ ...player, [name]: value })
     }
 
     useEffect(() => {
-        setUser(props.currentPlayer)
+        setPlayer(props.currentPlayer)
     }, [props])
 
     return (
         <Form
             onSubmit={(event) => {
                 event.preventDefault()
-                props.playerJoinTeam(player.PlayerName, player.TeamName)
+                props.playerJoinTeam(player.playerName, player.teamName)
             }}
         >
             <div className='form-group col'>
@@ -28,7 +28,7 @@ const EditTeamForm = (props) => {
             </div>
             <div className='form-group col'>
                 <label>Team Name</label>
-                <input type='text' name='TeamName' value={player.TeamName}
+                <input type='text' name='TeamName' value={player.teamName}
                     onChange={handleInputChange} />
             </div>
             <Button

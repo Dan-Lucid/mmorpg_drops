@@ -16,9 +16,9 @@ const PlayerTable = (props) => {
                 {props.players.length > 0 ? (
                     props.players.map((player) => (
                         <tr key={player.playerName} >
-                            <td>{player.PlayerID} </td>
+                            <td>{player.playerID} </td>
                             <td>{player.playerName} </td>
-                            <td>{player.TeamName} </td>
+                            <td>{player.teamName} </td>
                         </tr>
                     ))
                 ) : (

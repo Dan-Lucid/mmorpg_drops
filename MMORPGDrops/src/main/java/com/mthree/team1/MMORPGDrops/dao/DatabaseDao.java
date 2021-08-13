@@ -247,6 +247,13 @@ public class DatabaseDao implements Dao {
         List<Player> AllPlayers = jdbc.query(ALL_PLAYERS, new PlayersMapper());
         return AllPlayers;
     }
+    
+    @Override
+    public List<Record> getAllRecords() {
+        final String ALL_RECORDS = "SELECT RecordID, PlayerName, ItemName FROM(SELECT RecordID, PlayerName, itemID FROM record LEFT JOIN player ON player.playerID = record.playerID) a LEFT JOIN item ON a.itemID = item.itemID";
+        List<Record> AllRecords = jdbc.query(ALL_RECORDS, new RecordsMapper());
+        return AllRecords;
+    }
 
     private static final class PlayerMapper implements RowMapper<Player> {
         
@@ -298,6 +305,15 @@ public class DatabaseDao implements Dao {
         public Player mapRow(ResultSet rs, int index) throws SQLException {
             Player player = new Player(rs.getInt("PlayerID"), rs.getString("PlayerName"), rs.getString("TeamName"));
             return player;
+        }
+    }
+    
+    private static final class RecordsMapper implements RowMapper<Record> {
+
+        @Override
+        public Record mapRow(ResultSet rs, int index) throws SQLException {
+            Record record = new Record(rs.getInt("RecordId"), rs.getString("PlayerName"), rs.getString("ItemName"));
+            return record;
         }
     }
 }

@@ -5,7 +5,6 @@
  */
 package com.mthree.team1.MMORPGDrops.dto;
 
-import java.time.LocalDateTime;
 
 /**
  *
@@ -13,15 +12,13 @@ import java.time.LocalDateTime;
  */
 public class Record {
     private int recordId;
-    private int playerId;
-    private int itemId;
-    private LocalDateTime timeReceived;
+    private String playerName;
+    private String itemName;
 
-    public Record(int recordId, int playerId, int itemId) {
+    public Record(int recordId, String playerName, String itemName) {
         this.recordId = recordId;
-        this.playerId = playerId;
-        this.itemId = itemId;
-        this.timeReceived = timeReceived;
+        this.playerName = playerName;
+        this.itemName = itemName;
     }
 
     public int getRecordId() {
@@ -32,29 +29,23 @@ public class Record {
         this.recordId = recordId;
     }
 
-    public int getPlayerId() {
-        return playerId;
+    public String getPlayerName() {
+        return playerName;
     }
 
-    public void setPlayerId(int playerId) {
-        this.playerId = playerId;
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
     }
 
-    public int getItemId() {
-        return itemId;
+    public String getItemName() {
+        return itemName;
     }
 
-    public void setItemId(int itemId) {
-        this.itemId = itemId;
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
     }
-
-    public LocalDateTime getTimeReceived() {
-        return timeReceived;
-    }
-
-    public void setTimeReceived(LocalDateTime timeReceived) {
-        this.timeReceived = timeReceived;
-    }
+    
+    
     
     
 }

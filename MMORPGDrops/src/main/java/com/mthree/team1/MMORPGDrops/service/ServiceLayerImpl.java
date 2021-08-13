@@ -10,6 +10,7 @@ import com.mthree.team1.MMORPGDrops.dto.Hiscore;
 import java.util.List;
 
 import com.mthree.team1.MMORPGDrops.dto.Player;
+import com.mthree.team1.MMORPGDrops.dto.Record;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -77,6 +78,11 @@ public class ServiceLayerImpl implements ServiceLayer{
     @Override
     public List<Player> getAllPlayers() {
         return dao.getAllPlayers();
+    }
+
+    @Override
+    public List<Record> getAllRecords() {
+        return dao.getAllRecords();
     }
 
 }

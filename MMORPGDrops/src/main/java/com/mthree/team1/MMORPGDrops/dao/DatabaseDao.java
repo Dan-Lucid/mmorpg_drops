@@ -257,7 +257,7 @@ public class DatabaseDao implements Dao {
     
     @Override
     public List<Team> getAllTeams() {
-        final String ALL_TEAMS = "SELECT * from teams";
+        final String ALL_TEAMS = "SELECT * FROM team";
         List<Team> AllTeams = jdbc.query(ALL_TEAMS, new TeamsMapper());
         return AllTeams;
     }

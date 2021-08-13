@@ -8,6 +8,7 @@ package com.mthree.team1.MMORPGDrops.dao;
 import com.mthree.team1.MMORPGDrops.dto.Hiscore;
 import com.mthree.team1.MMORPGDrops.dto.Player;
 import com.mthree.team1.MMORPGDrops.dto.Record;
+import com.mthree.team1.MMORPGDrops.dto.Team;
 
 import java.util.List;
 

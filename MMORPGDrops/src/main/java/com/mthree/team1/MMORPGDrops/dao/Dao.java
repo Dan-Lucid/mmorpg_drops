@@ -29,4 +29,5 @@ public interface Dao {
     List<Hiscore> getTeamHiscores();
     List<Player> getAllPlayers();
     List<Record> getAllRecords();
+    List<Team> getAllTeams();
 }

@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.mthree.team1.MMORPGDrops.dto.Player;
 import com.mthree.team1.MMORPGDrops.dto.Record;
+import com.mthree.team1.MMORPGDrops.dto.Team;
 import org.springframework.stereotype.Service;
 
 /**
@@ -31,5 +32,6 @@ public interface ServiceLayer {
     List<Hiscore> getTeamHiscores();
     List<Player> getAllPlayers();
     List<Record> getAllRecords();
+    List<Team> getAllTeams();
     
 }

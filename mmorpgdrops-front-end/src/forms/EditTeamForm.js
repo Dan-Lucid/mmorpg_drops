@@ -33,7 +33,7 @@ const EditTeamForm = (props) => {
             </div>
             <Button
                 type='submit'
-            >Join Team</Button>
+            >Join Team</Button>&nbsp;
             <Button
                 onClick={() => props.setEditing(false)}
                 className='button muted-button'

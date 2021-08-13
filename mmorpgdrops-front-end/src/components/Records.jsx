@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import PlayerRecordTable from '../tables/PlayerRecordTable';
+import RecordTable from '../tables/RecordTable';
 import AddRecordForm from '../forms/AddRecordForm';
 import { Container, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -7,11 +7,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 export function Records (props){
-  const recordData = [
-  ]
-
-  const [records, setRecords] = useState(recordData)
-
   const SERVICE_URL = 'http://localhost:8080'
 
   const getPlayerData = () => {
@@ -20,8 +15,16 @@ export function Records (props){
       .then(records => setRecords(records))        // pick first user
   }
 
-  const addRecord = (records) => {
-    fetch(SERVICE_URL + '/addRecord/'+records.playerName, {
+  const recordData = [
+
+
+
+  ]
+
+  const [records, setRecords] = useState(recordData)
+
+  const addLoot = (records) => {
+    fetch(SERVICE_URL + '/addLoot/'+records.playerName + '/' + records.itemName, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -38,10 +41,9 @@ export function Records (props){
       });
   }
 
-  const removeRecord = (records) => {
-    console.log(`Submitting delete for record ${records}`)
+  const removeLoot = (records) => {
 
-    fetch(SERVICE_URL + '/removeRecord/' + records, {
+    fetch(SERVICE_URL + '/removeLoot/' + records.playerName + '/'+ records.itemName, {
       method: 'POST',
     })
       .then(data => {
@@ -53,11 +55,6 @@ export function Records (props){
       });
   }
 
-  const initialFormState = {
-    recordID: null,
-    playerName: '',
-    itemName: ''
-  }
 
 
 
@@ -72,11 +69,17 @@ export function Records (props){
       <hr />
       <Row>
         <Col sm={9}>
-          <h2>Player Table</h2>
-          <PlayerRecordTable
-            players={records}
-            deletePlayer={removeRecord}
+          <h2>Records</h2>
+          <RecordTable
+            records={records}
+            removeLoot={removeLoot}
           />
+        </Col>
+        <Col sm={3}>
+        <div>
+            <h2>Add Record</h2>
+            <AddRecordForm addLoot={addLoot} />
+          </div>
         </Col>
       </Row>
     </Container>

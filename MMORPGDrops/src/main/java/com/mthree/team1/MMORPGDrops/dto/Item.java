@@ -14,6 +14,12 @@ public class Item {
     private String itemName;
     private int pointValue;
 
+    public Item(int itemId, String itemName, int pointValue) {
+        this.itemId = itemId;
+        this.itemName = itemName;
+        this.pointValue = pointValue;
+    }
+    
     public Item(int itemId, String itemName) {
         this.itemId = itemId;
         this.itemName = itemName;

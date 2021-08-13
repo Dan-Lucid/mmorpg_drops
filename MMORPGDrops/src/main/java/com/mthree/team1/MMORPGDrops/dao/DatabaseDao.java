@@ -80,7 +80,7 @@ public class DatabaseDao implements Dao {
     }
 
     @Override
-    public String addTeam(String teamName) {
+    public Team addTeam(String teamName) {
         final String ADD_TEAM = "INSERT INTO team (TeamName) VALUES (?);";
         GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
         
@@ -94,9 +94,9 @@ public class DatabaseDao implements Dao {
             return statement;
         }, keyHolder);
         
-
+        Team newTeam = new Team(keyHolder.getKey().intValue(), teamName);
         
-        return teamName;
+        return newTeam;
     }
 
     @Override
@@ -120,7 +120,7 @@ public class DatabaseDao implements Dao {
     }
 
     @Override
-    public String addLoot(String playerName, String  itemName) {
+    public Record addLoot(String playerName, String  itemName) {
         
         final String GET_PLAYER = "SELECT PlayerId, PlayerName FROM player WHERE PlayerName = ?";
         Player playerReceived = jdbc.queryForObject(GET_PLAYER, new PlayerMapper(), playerName);
@@ -146,9 +146,10 @@ public class DatabaseDao implements Dao {
             return statement;
         }, keyHolder);
         
-
+        Record addedLoot = new Record(keyHolder.getKey().intValue(), playerName, itemName);
         
-        return itemName;
+        
+        return addedLoot;
     }
 
     @Override
@@ -189,6 +190,10 @@ public class DatabaseDao implements Dao {
         final String GET_TEAM = "SELECT TeamId, TeamName FROM team WHERE TeamName = ?;";
         Team teamJoined = jdbc.queryForObject(GET_TEAM, new TeamMapper(), teamName);
         
+        final String GET_PLAYER = "SELECT PlayerId, PlayerName FROM player WHERE PlayerName = ?";
+        Player playerReceived = jdbc.queryForObject(GET_PLAYER, new PlayerMapper(), playerName);
+        int playerId = playerReceived.getPlayerId();
+        
         int teamId = teamJoined.getTeamId();
         
         final String JOIN_TEAM = "UPDATE player SET TeamID = ? WHERE PlayerName = ?;";
@@ -204,16 +209,18 @@ public class DatabaseDao implements Dao {
             statement.setString(2, playerName);
             return statement;
         }, keyHolder);
-        
-        Player updatedPlayer = new Player(keyHolder.getKey().intValue(),playerName, teamName);
-        
+        Player updatedPlayer = new Player(playerId, playerName, teamName);
         return updatedPlayer;
     }
 
     @Override
-    public String leaveTeam(String playerName, String  teamName) { 
+    public Player leaveTeam(String playerName) { 
         final String LEAVE_TEAM = "UPDATE player SET TeamID = ? WHERE PlayerName = ?;";
         GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
+        
+        final String GET_PLAYER = "SELECT PlayerId, PlayerName FROM player WHERE PlayerName = ?";
+        Player playerReceived = jdbc.queryForObject(GET_PLAYER, new PlayerMapper(), playerName);
+        int playerId = playerReceived.getPlayerId();
         
         jdbc.update((Connection conn) -> {
             
@@ -226,7 +233,8 @@ public class DatabaseDao implements Dao {
             return statement;
         }, keyHolder);
         
-        return teamName;
+        Player updatedPlayer = new Player(playerId, playerName, "");
+        return updatedPlayer;
     }
 
     @Override
@@ -262,6 +270,13 @@ public class DatabaseDao implements Dao {
         final String ALL_TEAMS = "SELECT * FROM team";
         List<Team> AllTeams = jdbc.query(ALL_TEAMS, new TeamsMapper());
         return AllTeams;
+    }
+    
+    @Override
+    public List<Item> getAllItems() {
+        final String ALL_ITEMS = "SELECT * FROM item";
+        List<Item> AllItems = jdbc.query(ALL_ITEMS, new ItemsMapper());
+        return AllItems;
     }
 
     private static final class PlayerMapper implements RowMapper<Player> {
@@ -332,6 +347,15 @@ public class DatabaseDao implements Dao {
         public Team mapRow(ResultSet rs, int index) throws SQLException {
             Team team = new Team(rs.getInt("TeamId"), rs.getString("TeamName"));
             return team;
+        }
+    }
+    
+    private static final class ItemsMapper implements RowMapper<Item> {
+
+        @Override
+        public Item mapRow(ResultSet rs, int index) throws SQLException {
+            Item item = new Item(rs.getInt("ItemId"), rs.getString("ItemName"),rs.getInt("PointValue"));
+            return item;
         }
     }
 }

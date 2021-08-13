@@ -56,7 +56,7 @@ export function Players (props){
   
   const initialFormState = {
     playerName: '',
-    teamName: null
+    teamName: ''
   }
 
   const [currentPlayer, setCurrentPlayer] = useState(initialFormState)
@@ -72,15 +72,13 @@ export function Players (props){
 
   const joinTeam = (playerName, player) => {
 
-    console.log(`Submitting edit for player ${playerName}`)
-    console.log(player)
 
-    fetch(SERVICE_URL + '/joinTeam/' + playerName + '/' + player.teamName,{
-      method: 'POST',
+    fetch(SERVICE_URL + '/joinTeam/' + playerName,{
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(player),
+      body: JSON.stringify(player.teamName),
     })
       .then(response => response.json())
       .then(data => {
@@ -93,6 +91,28 @@ export function Players (props){
       });
   }
 
+
+  const leaveTeam = (playerName) => {
+
+    fetch(SERVICE_URL + '/leaveTeam/' + playerName,{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      //body: JSON.stringify(),
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+        setEditing(false)
+        getPlayerData();
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
+
+
   useEffect(() => {
     getPlayerData()
   }, [props])
@@ -104,7 +124,7 @@ export function Players (props){
       <hr />
       <Row>
         <Col sm={9}>
-          <h2>Player Table</h2>
+          <h2>Players</h2>
           <PlayerTable
             players={players}
             removePlayer={removePlayer}
@@ -119,6 +139,7 @@ export function Players (props){
                 setEditing={setEditing}
                 currentPlayer={currentPlayer}
                 joinTeam={joinTeam}
+                leaveTeam={leaveTeam}
               />
             </div>
           ) : (

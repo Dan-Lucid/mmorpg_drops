@@ -14,6 +14,10 @@ public class Player {
     private String playerName;
     private String teamName;
 
+    public Player() {
+        
+    }
+    
     public Player(int playerId, String playerName) {
         this.playerId = playerId;
         this.playerName = playerName;
@@ -21,6 +25,11 @@ public class Player {
 
     public Player(int playerId, String playerName, String teamName) {
         this.playerId = playerId;
+        this.playerName = playerName;
+        this.teamName = teamName;
+    }
+    
+    public Player( String playerName, String teamName) {
         this.playerName = playerName;
         this.teamName = teamName;
     }

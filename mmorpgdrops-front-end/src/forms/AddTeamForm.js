@@ -20,7 +20,7 @@ const AddTeamForm = (props) => {
         <Form
             onSubmit={(event) => {
                 event.preventDefault()
-                props.addPlayer(team)
+                props.addTeam(team)
                 setTeam(initialFormState)
             }}
         >
@@ -32,7 +32,7 @@ const AddTeamForm = (props) => {
     
             <Button
                 type='submit'
-            >Add New Player</Button>
+            >Add New Team</Button>
         </Form>
     )
 }

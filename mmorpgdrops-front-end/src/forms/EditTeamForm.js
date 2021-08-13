@@ -16,18 +16,14 @@ const EditTeamForm = (props) => {
 
         setPlayer({ ...player, [name]: value })
     }
-    /*
-    useEffect(() => {
-        setPlayer(props.currentPlayer);
-    }, [props])
-*/
+    
     return (
-        <Form
-            onSubmit={(event) => {
-                event.preventDefault()
-                props.joinTeam(player.playerName, player.teamName)
-                setPlayer(initialFormState)
-            }}
+        <Form onSubmit={(event) => {
+            event.preventDefault()
+            props.joinTeam(player.playerName, player)
+            setPlayer(initialFormState)
+        }}
+        
         >
             <div className='form-group col'>
                 <label>Player Name</label>
@@ -35,12 +31,19 @@ const EditTeamForm = (props) => {
             </div>
             <div className='form-group col'>
                 <label>Team Name</label>
-                <input type='text' name='TeamName' value={player.teamName}
+                <input type='text' name='teamName' value={player.teamName}
                     onChange={handleInputChange} />
             </div>
             <Button
-                type='submit'
+                type="submit"
             >Join Team</Button>&nbsp;
+            <Button
+                onClick={() => {
+                    props.setEditing(false)
+                    props.leaveTeam(player.playerName)
+                }
+                }
+            >Leave Team</Button>&nbsp;
             <Button
                 onClick={() => props.setEditing(false)}
                 className='button muted-button'

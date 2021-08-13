@@ -11,6 +11,7 @@ const PlayerTable = (props) => {
                     <th>Player ID</th>
                     <th>Player Name</th>
                     <th>Team Name</th>
+                    <th>Controls</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,8 +24,8 @@ const PlayerTable = (props) => {
                             <td>
                                 <Button
                                     className='primary'
-                                    onClick={() => props.editRow(player.playerName)}
-                                >Join Team</Button>
+                                    onClick={() => props.editRow(player)}
+                                >Edit Team</Button>
                             </td>
                             <td>
                                 <Button

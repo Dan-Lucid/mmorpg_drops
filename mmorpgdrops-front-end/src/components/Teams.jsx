@@ -1,26 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import TeamTable from '../tables/TeamTable';
+import AddTeamForm from '../forms/AddTeamForm';
 import { Container, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
 export function Teams (props){
+  const SERVICE_URL = 'http://localhost:8080'
+
+  const getTeamData = () => {
+    return fetch(SERVICE_URL + '/allTeams')      // get users list
+      .then(response => response.json())           // parse JSON
+      .then(teams => setTeams(teams))        // pick first user
+  }
+
   const teamData = [
+
+
+
   ]
 
   const [teams, setTeams] = useState(teamData)
 
-  const SERVICE_URL = 'http://localhost:8080'
-
-  const getPlayerData = () => {
-    return fetch(SERVICE_URL + '/allTeams')      // get users list
-      .then(response => response.json())           // parse JSON
-      .then(players => setTeams(players))        // pick first user
-  }
-
-  const addPlayer = (teams) => {
-    fetch(SERVICE_URL + '/addTeam/'+teams.playerName, {
+  const addTeam = (teams) => {
+    fetch(SERVICE_URL + '/addTeam/'+teams.teamName, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -29,7 +33,7 @@ export function Teams (props){
     })
       .then(response => response.json())
       .then(data => {
-        getPlayerData();
+        getTeamData();
       })
       .catch((error) => {
         console.log('Add Team - Error:')
@@ -44,7 +48,7 @@ export function Teams (props){
       method: 'POST',
     })
       .then(data => {
-        getPlayerData();
+        getTeamData();
         console.log('Delete successful');
       })
       .catch((error) => {
@@ -52,14 +56,10 @@ export function Teams (props){
       });
   }
 
-  const initialFormState = {
-    teamId: null,
-    teamName: ''
-  }
 
   
   useEffect(() => {
-    getPlayerData()
+    getTeamData()
   }, [props])
 
 
@@ -69,13 +69,18 @@ export function Teams (props){
       <hr />
       <Row>
         <Col sm={9}>
-          <h2>Team Table</h2>
+          <h2>Teams</h2>
           <TeamTable
             teams={teams}
-            deleteTeam={removeTeam}
+            removeTeam={removeTeam}
           />
         </Col>
-    
+        <Col sm={3}>
+          <div>
+            <h2>Add Team</h2>
+            <AddTeamForm addTeam={addTeam} />
+          </div>
+        </Col>
       </Row>
     </Container>
   )

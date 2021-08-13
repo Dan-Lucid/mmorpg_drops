@@ -9,31 +9,34 @@ const AddRecordForm = (props) => {
         playerName: '',
         itemName: ''
     }
-    const [record, setRecord] = useState(initialFormState)
+    const [record, setLoot] = useState(initialFormState)
 
     const handleInputChange = (event) => {
         const { name, value } = event.target
 
-        setRecord({ ...record, [name]: value })
+        setLoot({ ...record, [name]: value })
     }
 
     return (
         <Form
             onSubmit={(event) => {
                 event.preventDefault()
-                props.addLoot(player)
+                props.addLoot(record)
                 setLoot(initialFormState)
             }}
         >
             <div className='form-group col'>
-                <label>Record ID</label>
-                <input type='text' name='recorsId' value={record.recordID}
+                <label>Player Name</label>
+                <input type='text' name='playerName' value={record.playerName}
+                    onChange={handleInputChange} /><br/>
+                <label>Item Name</label>
+                <input type='text' name='itemName' value={record.itemName}
                     onChange={handleInputChange} />
             </div>
     
             <Button
                 type='submit'
-            >Add New Player</Button>
+            >Add New Record</Button>
         </Form>
     )
 }

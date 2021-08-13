@@ -6,20 +6,21 @@
 package com.mthree.team1.MMORPGDrops.controller;
 
 import com.mthree.team1.MMORPGDrops.dto.Hiscore;
+import com.mthree.team1.MMORPGDrops.dto.Item;
 import com.mthree.team1.MMORPGDrops.dto.Player;
 import com.mthree.team1.MMORPGDrops.dto.Record;
 import com.mthree.team1.MMORPGDrops.dto.Team;
 import com.mthree.team1.MMORPGDrops.service.ServiceLayerImpl;
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -55,11 +56,11 @@ public class Controller {
     @PostMapping("/addTeam/{teamName}")
     @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<String> addTeam(@PathVariable String teamName) {
-        String addedTeam = service.addTeam(teamName);
+    public ResponseEntity<Team> addTeam(@PathVariable String teamName) {
+        Team addedTeam = service.addTeam(teamName);
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body("Team " + addedTeam + " added to competition.");
+                .body(addedTeam);
     }
     
     @PostMapping("/removeTeam/{teamName}")
@@ -75,11 +76,11 @@ public class Controller {
     @PostMapping("/addLoot/{playerName}/{itemName}")
     @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<String> addLoot(@PathVariable String playerName, @PathVariable String itemName) {
-        String addedLoot = service.addLoot(playerName, itemName);
+    public ResponseEntity<Record> addLoot(@PathVariable String playerName, @PathVariable String itemName) {
+        Record addedLoot = service.addLoot(playerName, itemName);
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(addedLoot + " added for "+ playerName);
+                .body(addedLoot);
     }
     
     @PostMapping("/removeLoot/{playerName}/{itemName}")
@@ -92,24 +93,25 @@ public class Controller {
                 .body(removedLoot + " removed for " + playerName);
     }
     
-    @PostMapping("/joinTeam/{playerName}/{teamName}")
+    @PutMapping("/joinTeam/{playerName}")
     @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Player> joinTeam(@PathVariable String playerName, @PathVariable String teamName) {
-        Player joinedPlayer = service.joinTeam(playerName, teamName);
+    public ResponseEntity<Player> joinTeam(@PathVariable String playerName, @RequestBody String teamName) {
+        teamName = teamName.replace("\"", "");
+        Player editedPlayer = service.joinTeam(playerName, teamName);
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(joinedPlayer);
+                .body(editedPlayer);
     }
     
-    @PostMapping("/leaveTeam/{playerName}/{teamName}")
+    @PostMapping("/leaveTeam/{playerName}")
     @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<String> leaveTeam(@PathVariable String playerName, @PathVariable String teamName) {
-        String leftTeam = service.leaveTeam(playerName, teamName);
+    public ResponseEntity<Player> leaveTeam(@PathVariable String playerName) {
+        Player editedPlayer = service.leaveTeam(playerName);
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(playerName + " left Team " + leftTeam);
+                .body(editedPlayer);
     }
     
     @GetMapping("/playerHiscores")
@@ -145,5 +147,12 @@ public class Controller {
     @ResponseStatus(HttpStatus.OK)
     public List<Team> getAllTeams() {
         return service.getAllTeams();
+    }
+    
+    @GetMapping("/allItems")
+    @CrossOrigin
+    @ResponseStatus(HttpStatus.OK)
+    public List<Item> getAllItems() {
+        return service.getAllItems();
     }
 }

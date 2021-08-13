@@ -1,5 +1,5 @@
 import React from 'react'
-import {Table } from 'react-bootstrap'
+import {Table, Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const TeamTable = (props) => {
@@ -9,14 +9,21 @@ const TeamTable = (props) => {
                 <tr>
                     <th>Team ID</th>
                     <th>Team Name</th>
+                    <th>Controls</th>
                 </tr>
             </thead>
             <tbody>
                 {props.teams.length > 0 ? (
                     props.teams.map((team) => (
-                        <tr key={team.teamId} >
+                        <tr key={team.teamName} >
                             <td>{team.teamId} </td>
                             <td>{team.teamName} </td>
+                            <td>
+                                <Button
+                                    className='primary'
+                                    onClick={() => props.removeTeam(team.teamName)}
+                                >Delete</Button>
+                            </td>
                         </tr>
                     ))
                 ) : (

@@ -7,6 +7,7 @@ package com.mthree.team1.MMORPGDrops.service;
 
 import com.mthree.team1.MMORPGDrops.dao.DatabaseDao;
 import com.mthree.team1.MMORPGDrops.dto.Hiscore;
+import com.mthree.team1.MMORPGDrops.dto.Item;
 import java.util.List;
 
 import com.mthree.team1.MMORPGDrops.dto.Player;
@@ -37,7 +38,7 @@ public class ServiceLayerImpl implements ServiceLayer{
     }
 
     @Override
-    public String addTeam(String teamName) {
+    public Team addTeam(String teamName) {
         return dao.addTeam(teamName);
     }
 
@@ -47,7 +48,7 @@ public class ServiceLayerImpl implements ServiceLayer{
     }
 
     @Override
-    public String addLoot(String playerName, String  itemName) {
+    public Record addLoot(String playerName, String  itemName) {
         return dao.addLoot(playerName, itemName);
     }
 
@@ -62,8 +63,8 @@ public class ServiceLayerImpl implements ServiceLayer{
     }
 
     @Override
-    public String leaveTeam(String playerName, String  teamName) {
-        return dao.leaveTeam(playerName, teamName);
+    public Player leaveTeam(String playerName) {
+        return dao.leaveTeam(playerName);
     }
 
     @Override
@@ -89,6 +90,10 @@ public class ServiceLayerImpl implements ServiceLayer{
     @Override
     public List<Team> getAllTeams() {
         return dao.getAllTeams();
+    }
+
+    public List<Item> getAllItems() {
+        return dao.getAllItems();
     }
 
 }

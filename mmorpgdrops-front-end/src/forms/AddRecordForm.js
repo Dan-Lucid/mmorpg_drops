@@ -38,4 +38,4 @@ const AddRecordForm = (props) => {
     )
 }
 
-export default AddPlayerForm
+export default AddRecordForm

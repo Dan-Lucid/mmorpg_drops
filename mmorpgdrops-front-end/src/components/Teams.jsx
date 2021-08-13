@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import TeamTable from '../tables/TeamTable';
-import AddTeamForm from '../forms/AddTeamForm';
-import EditTeamForm from '../forms/EditTeamForm';
 import { Container, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 

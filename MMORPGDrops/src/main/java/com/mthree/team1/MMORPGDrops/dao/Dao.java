@@ -24,7 +24,7 @@ public interface Dao {
     String removeTeam(String teamName);
     String addLoot(String playerName, String  itemName);
     String removeLoot(String playerName, String  itemName);
-    String joinTeam(String playerName, String  teamName);
+    Player joinTeam(String playerName, String  teamName);
     String leaveTeam(String playerName, String  teamName);
     List<Hiscore> getPlayerHiscores();
     List<Hiscore> getTeamHiscores();

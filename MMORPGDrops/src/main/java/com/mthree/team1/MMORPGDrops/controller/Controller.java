@@ -95,11 +95,11 @@ public class Controller {
     @PostMapping("/joinTeam/{playerName}/{teamName}")
     @CrossOrigin
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<String> joinTeam(@PathVariable String playerName, @PathVariable String teamName) {
-        String joinedTeam = service.joinTeam(playerName, teamName);
+    public ResponseEntity<Player> joinTeam(@PathVariable String playerName, @PathVariable String teamName) {
+        Player joinedPlayer = service.joinTeam(playerName, teamName);
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(playerName + " joined Team " + joinedTeam);
+                .body(joinedPlayer);
     }
     
     @PostMapping("/leaveTeam/{playerName}/{teamName}")

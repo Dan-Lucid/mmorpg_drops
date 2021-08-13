@@ -184,7 +184,7 @@ public class DatabaseDao implements Dao {
     }
 
     @Override
-    public String joinTeam(String playerName, String  teamName) {
+    public Player joinTeam(String playerName, String  teamName) {
         
         final String GET_TEAM = "SELECT TeamId, TeamName FROM team WHERE TeamName = ?;";
         Team teamJoined = jdbc.queryForObject(GET_TEAM, new TeamMapper(), teamName);
@@ -205,7 +205,9 @@ public class DatabaseDao implements Dao {
             return statement;
         }, keyHolder);
         
-        return teamName;
+        Player updatedPlayer = new Player(keyHolder.getKey().intValue(),playerName, teamName);
+        
+        return updatedPlayer;
     }
 
     @Override

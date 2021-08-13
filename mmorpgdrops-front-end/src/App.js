@@ -1,6 +1,5 @@
-import { BrowserRouter as Router, Switch, Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import logo from './logo.svg';
 import './App.css';
 import  { PlayerHiscores } from './components/PlayerHiscores';
 import  { TeamHiscores } from './components/TeamHiscores';

@@ -57,7 +57,7 @@ public class ServiceLayerImpl implements ServiceLayer{
     }
 
     @Override
-    public String joinTeam(String playerName, String  teamName) {
+    public Player joinTeam(String playerName, String  teamName) {
         return dao.joinTeam(playerName, teamName);
     }
 

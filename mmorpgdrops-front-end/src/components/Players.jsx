@@ -7,11 +7,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 export function Players (props){
-  const playerData = [
-  ]
-
-  const [players, setPlayers] = useState(playerData)
-
   const SERVICE_URL = 'http://localhost:8080'
 
   const getPlayerData = () => {
@@ -19,6 +14,14 @@ export function Players (props){
       .then(response => response.json())           // parse JSON
       .then(players => setPlayers(players))        // pick first user
   }
+
+  const playerData = [
+
+
+
+  ]
+
+  const [players, setPlayers] = useState(playerData)
 
   const addPlayer = (players) => {
     fetch(SERVICE_URL + '/addPlayer/'+players.playerName, {
@@ -51,15 +54,6 @@ export function Players (props){
       });
   }
   
-  const editRow = (player) => {
-    setEditing(true)
-
-    setCurrentPlayer({
-      playerName: player.playerName,
-      teamName: player.teamName
-    })
-  }
-
   const initialFormState = {
     playerName: '',
     teamName: null
@@ -68,17 +62,25 @@ export function Players (props){
   const [currentPlayer, setCurrentPlayer] = useState(initialFormState)
   const [editing, setEditing] = useState(false)
 
-  const joinTeam = (player, teamName) => {
+  const editRow = (player) => {
+    setEditing(true)
+    setCurrentPlayer({
+      playerName: player.playerName,
+      teamName: player.teamName
+    })
+  }
 
-    console.log(`Submitting edit for player ${player}`)
-    console.log(teamName)
+  const joinTeam = (playerName, player) => {
 
-    fetch(SERVICE_URL + '/joinTeam/' + player + '/' + teamName,{
+    console.log(`Submitting edit for player ${playerName}`)
+    console.log(player)
+
+    fetch(SERVICE_URL + '/joinTeam/' + playerName + '/' + player.teamName,{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(teamName),
+      body: JSON.stringify(player),
     })
       .then(response => response.json())
       .then(data => {

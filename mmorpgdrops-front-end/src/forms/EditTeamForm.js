@@ -1,25 +1,32 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const EditTeamForm = (props) => {
-    const [player, setPlayer] = useState(props.currentPlayer)
 
+    const initialFormState = {
+        playerID: null,
+        playerName: '',
+        teamName: ''
+    }
+    const [player, setPlayer] = useState(props.currentPlayer)
+    
     const handleInputChange = (event) => {
         const { name, value } = event.target
 
         setPlayer({ ...player, [name]: value })
     }
-
+    /*
     useEffect(() => {
-        setPlayer(props.currentPlayer)
+        setPlayer(props.currentPlayer);
     }, [props])
-
+*/
     return (
         <Form
             onSubmit={(event) => {
                 event.preventDefault()
-                props.joinTeam("Dan", "team1")
+                props.joinTeam(player.playerName, player.teamName)
+                setPlayer(initialFormState)
             }}
         >
             <div className='form-group col'>

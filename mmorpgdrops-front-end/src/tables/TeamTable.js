@@ -29,4 +29,4 @@ const TeamTable = (props) => {
     )
 }
 
-export default PlayerTable
+export default TeamTable

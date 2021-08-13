@@ -19,7 +19,7 @@ const EditTeamForm = (props) => {
         <Form
             onSubmit={(event) => {
                 event.preventDefault()
-                props.playerJoinTeam(player.playerName, player.teamName)
+                props.joinTeam("Dan", "team1")
             }}
         >
             <div className='form-group col'>
@@ -33,7 +33,7 @@ const EditTeamForm = (props) => {
             </div>
             <Button
                 type='submit'
-            >Join Contact</Button>
+            >Join Team</Button>
             <Button
                 onClick={() => props.setEditing(false)}
                 className='button muted-button'

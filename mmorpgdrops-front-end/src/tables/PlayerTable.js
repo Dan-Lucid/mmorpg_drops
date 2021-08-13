@@ -23,6 +23,12 @@ const PlayerTable = (props) => {
                             <td>
                                 <Button
                                     className='primary'
+                                    onClick={() => props.editRow(player.playerName)}
+                                >Join Team</Button>
+                            </td>
+                            <td>
+                                <Button
+                                    className='primary'
                                     onClick={() => props.removePlayer(player.playerName)}
                                 >Delete</Button>
                             </td>

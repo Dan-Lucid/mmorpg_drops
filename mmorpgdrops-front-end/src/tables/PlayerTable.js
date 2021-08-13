@@ -1,6 +1,7 @@
-import React from 'react'
-import {Table } from 'react-bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import React from 'react';
+import {Table, Button } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const PlayerTable = (props) => {
     return (
@@ -19,6 +20,12 @@ const PlayerTable = (props) => {
                             <td>{player.playerId} </td>
                             <td>{player.playerName} </td>
                             <td>{player.teamName} </td>
+                            <td>
+                                <Button
+                                    className='primary'
+                                    onClick={() => props.removePlayer(player.playerName)}
+                                >Delete</Button>
+                            </td>
                         </tr>
                     ))
                 ) : (

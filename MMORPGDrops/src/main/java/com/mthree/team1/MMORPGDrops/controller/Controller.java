@@ -7,6 +7,7 @@ package com.mthree.team1.MMORPGDrops.controller;
 
 import com.mthree.team1.MMORPGDrops.dto.Hiscore;
 import com.mthree.team1.MMORPGDrops.dto.Player;
+import com.mthree.team1.MMORPGDrops.dto.Record;
 import com.mthree.team1.MMORPGDrops.service.ServiceLayerImpl;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -129,6 +130,13 @@ public class Controller {
     @ResponseStatus(HttpStatus.OK)
     public List<Player> getAllPlayers() {
         return service.getAllPlayers();
+    }
+    
+    @GetMapping("/allRecords")
+    @CrossOrigin
+    @ResponseStatus(HttpStatus.OK)
+    public List<Record> getAllRecords() {
+        return service.getAllRecords();
     }
     
 }
